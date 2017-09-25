@@ -38,11 +38,14 @@ Custom property | Description | Default
             :host iron-image {
                 height: 100px;
                 width: 100px;
-            }
-            :host:not([unlocked]) iron-image {
                 -webkit-filter: grayscale(100%);
                 filter: grayscale(100%);
                 opacity: 0.4;
+            }
+            :host([unlocked]) iron-image {
+                -webkit-filter: grayscale(0%);
+                filter: grayscale(0%);
+                opacity: 1;
             }
             :host .triangle {
                 border-left: 16px solid transparent;
@@ -73,19 +76,17 @@ Custom property | Description | Default
                     sizing="contain"
                     src="[[imageUrl]]">
                     </iron-image>
-        <dom-if>
-            <template is="dom-if" if="[[tooltip]]">
-                <paper-tooltip for="badge"
-                               animation-delay="0"
-                               margin-top="20"
-                               position="bottom">
-                    <div class="triangle"></div>
-                    <h3>[[title]]</h3>
-                    <p hidden$="[[_displayDescription]]">[[criteria]]</p>
-                    <p hidden$="[[!_displayDescription]]">[[description]]</p>
-                </paper-tooltip>
-            </template>
-        </dom-if>
+        <template is="dom-if" if="[[tooltip]]">
+            <paper-tooltip for="badge"
+                           animation-delay="0"
+                           margin-top="20"
+                           position="bottom">
+                <div class="triangle"></div>
+                <h3>[[title]]</h3>
+                <p hidden$="[[_displayDescription]]">[[criteria]]</p>
+                <p hidden$="[[!_displayDescription]]">[[description]]</p>
+            </paper-tooltip>
+        </template>
     </template>
 
     <script>
