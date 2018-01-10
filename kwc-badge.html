@@ -10,7 +10,7 @@ A small atomic badge display for Kano badges.
 
 Custom property | Description | Default
 ----------------|-------------|----------
-`--kwc-badge-margin` | The margin around the badge | `25px 0 0 0`
+`--kwc-badge-size` | The width and height of the badge | `100px`
 
 @group Kano Web Components
 @demo demo/index.html
@@ -33,11 +33,10 @@ Custom property | Description | Default
                 @apply --layout-vertical;
                 @apply --layout-wrap;
                 @apply --layout-center-justified;
-                margin: var(--kwc-badge-margin, 25px 0 0 0);
             }
             :host iron-image {
-                height: 100px;
-                width: 100px;
+                height: var(--kwc-badge-size, 100px);
+                width: var(--kwc-badge-size, 100px);
                 -webkit-filter: grayscale(100%);
                 filter: grayscale(100%);
             }
@@ -78,7 +77,8 @@ Custom property | Description | Default
             <paper-tooltip for="badge"
                            animation-delay="0"
                            margin-top="20"
-                           position="bottom">
+                           position="bottom"
+                           fit-to-visible-bounds>
                 <div class="triangle"></div>
                 <h3>[[title]]</h3>
                 <p hidden$="[[_displayDescription]]">[[criteria]]</p>
