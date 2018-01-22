@@ -67,6 +67,17 @@ Custom property | Description | Default
             :host *[hidden] {
                 display: none;
             }
+
+            /*
+            XXX: Hide fullscreen button on mobile screens while the
+            functionality until a full responsive solution is in place.
+            `768px` is the current media query value for `kwc-masthead`.
+            */
+            @media (max-width: 768px) {
+                paper-tooltip {
+                    display: none;
+                }
+            }
         </style>
         <iron-image id="badge"
                     alt="[[title]]"
