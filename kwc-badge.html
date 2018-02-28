@@ -1,7 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../iron-image/iron-image.html">
-<link rel="import" href="../paper-tooltip/paper-tooltip.html">
+<link rel="import" href="../kwc-paper-tooltip/kwc-paper-tooltip.html">
 <link rel="import" href="../web-components/kano-style/kano-style.html">
 
 <!--
@@ -56,11 +56,11 @@ Custom property | Description | Default
                 top: -8px;
                 width: 0;
             }
-            :host paper-tooltip h3 {
+            :host kwc-paper-tooltip h3 {
                 font-size: 18px;
                 margin: 0px 0px 10px 0px;
             }
-            :host paper-tooltip p {
+            :host kwc-paper-tooltip p {
                 font-size: 16px;
                 margin: 0px 0px 5px 0px;
             }
@@ -74,7 +74,7 @@ Custom property | Description | Default
             `768px` is the current media query value for `kwc-masthead`.
             */
             @media (max-width: 768px) {
-                paper-tooltip {
+                kwc-paper-tooltip {
                     display: none;
                 }
             }
@@ -85,7 +85,7 @@ Custom property | Description | Default
                     src="[[imageUrl]]">
                     </iron-image>
         <template is="dom-if" if="[[tooltip]]">
-            <paper-tooltip for="badge"
+            <kwc-paper-tooltip for="badge"
                            animation-delay="0"
                            margin-top="20"
                            position="bottom"
@@ -94,7 +94,7 @@ Custom property | Description | Default
                 <h3>[[title]]</h3>
                 <p hidden$="[[_displayDescription]]">[[criteria]]</p>
                 <p hidden$="[[!_displayDescription]]">[[description]]</p>
-            </paper-tooltip>
+            </kwc-paper-tooltip>
         </template>
     </template>
 
