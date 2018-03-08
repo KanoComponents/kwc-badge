@@ -5,7 +5,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.9.0",
     "iron-image": "^2.1.2",
-    "paper-tooltip": "^2.0.1",
+    "kwc-paper-tooltip": "KanoComponents/kwc-paper-tooltip#^2.x",
     "web-components": "git@github.com:KanoComputing/web-components.git#master",
     "iron-flex-layout": "^2.0.0"
   },

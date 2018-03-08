@@ -56,7 +56,7 @@
 
                 test('should show the tooltip by default', function(done) {
                     flush(function() {
-                        var children =  Polymer.dom(basic.root).querySelectorAll('paper-tooltip');
+                        var children =  Polymer.dom(basic.root).querySelectorAll('kwc-paper-tooltip');
                         assert.lengthOf(children, 1);
                         done();
                     });
@@ -65,7 +65,7 @@
                 test('should not show the tooltip by when suppressed', function(done) {
                     basic.tooltip = false;
                     flush(function() {
-                        var children =  Polymer.dom(basic.root).querySelectorAll('paper-tooltip');
+                        var children =  Polymer.dom(basic.root).querySelectorAll('kwc-paper-tooltip');
                         assert.lengthOf(children, 0);
                         done();
                     });
