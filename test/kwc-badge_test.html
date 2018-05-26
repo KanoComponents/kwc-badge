@@ -6,10 +6,10 @@
 
         <title>kwc-badge test</title>
 
-        <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-        <script src="../../web-component-tester/browser.js"></script>
+        <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+        <script src="../../../wct-browser-legacy/browser.js"></script>
 
-        <link rel="import" href="../kwc-badge.html">
+        <script type="module" src="../kwc-badge.js"></script>
     </head>
     <body>
         <test-fixture id="basic">
@@ -30,63 +30,65 @@
             </template>
         </test-fixture>
 
-        <script>
-            suite('kwc-badge', function() {
-                var basic,
-                    unlocked,
-                    unlockedByUser;
+        <script type="module">
+import '../kwc-badge.js';
+import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+suite('kwc-badge', function() {
+    var basic,
+        unlocked,
+        unlockedByUser;
 
-                setup(function () {
-                    basic = fixture('basic');
-                    unlocked = fixture('unlocked');
-                    unlockedByUser = fixture('unlockedByUser');
-                });
+    setup(function () {
+        basic = fixture('basic');
+        unlocked = fixture('unlocked');
+        unlockedByUser = fixture('unlockedByUser');
+    });
 
-                test('instantiating the element works', function() {
-                    assert.equal(basic.is, 'kwc-badge');
-                });
+    test('instantiating the element works', function() {
+        assert.equal(basic.is, 'kwc-badge');
+    });
 
-                test('should be locked by default', function() {
-                    assert.equal(basic.unlocked, false);
-                });
+    test('should be locked by default', function() {
+        assert.equal(basic.unlocked, false);
+    });
 
-                test('should have the tooltip set to true by default', function() {
-                    assert.equal(basic.tooltip, true);
-                });
+    test('should have the tooltip set to true by default', function() {
+        assert.equal(basic.tooltip, true);
+    });
 
-                test('should show the tooltip by default', function(done) {
-                    flush(function() {
-                        var children =  Polymer.dom(basic.root).querySelectorAll('kwc-paper-tooltip');
-                        assert.lengthOf(children, 1);
-                        done();
-                    });
-                });
+    test('should show the tooltip by default', function(done) {
+        flush(function() {
+            var children =  dom(basic.root).querySelectorAll('kwc-paper-tooltip');
+            assert.lengthOf(children, 1);
+            done();
+        });
+    });
 
-                test('should not show the tooltip by when suppressed', function(done) {
-                    basic.tooltip = false;
-                    flush(function() {
-                        var children =  Polymer.dom(basic.root).querySelectorAll('kwc-paper-tooltip');
-                        assert.lengthOf(children, 0);
-                        done();
-                    });
-                });
+    test('should not show the tooltip by when suppressed', function(done) {
+        basic.tooltip = false;
+        flush(function() {
+            var children =  dom(basic.root).querySelectorAll('kwc-paper-tooltip');
+            assert.lengthOf(children, 0);
+            done();
+        });
+    });
 
-                test('should have currentUser set false by default', function() {
-                    assert.equal(basic.currentUser, false);
-                });
+    test('should have currentUser set false by default', function() {
+        assert.equal(basic.currentUser, false);
+    });
 
-                test('should display the criteria by default', function() {
-                    assert.equal(basic._displayDescription, false);
-                });
+    test('should display the criteria by default', function() {
+        assert.equal(basic._displayDescription, false);
+    });
 
-                test('should display the criteria by if unlocked, but not by the current user', function() {
-                    assert.equal(unlocked._displayDescription, false);
-                });
+    test('should display the criteria by if unlocked, but not by the current user', function() {
+        assert.equal(unlocked._displayDescription, false);
+    });
 
-                test('should display the description by if unlocked by the current user', function() {
-                    assert.equal(unlockedByUser._displayDescription, true);
-                });
-            });
-        </script>
+    test('should display the description by if unlocked by the current user', function() {
+        assert.equal(unlockedByUser._displayDescription, true);
+    });
+});
+</script>
     </body>
 </html>
